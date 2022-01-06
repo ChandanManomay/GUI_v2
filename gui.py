@@ -112,7 +112,7 @@ def prepare():
         prepare_flag = True
 
 
-def stand_new_tempplate():
+def stand_new_template():
     clear_frame(container_frame)
     canvas = Canvas(container_frame, bg='white', width=450,
                     height=540)
