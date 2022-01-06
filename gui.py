@@ -140,7 +140,7 @@ def standard():
     templates_types_dropdown.config(bd=0)
     templates_types_dropdown.config(bg='#F3F3FB')
     Button(containt_frame, bg='#7CB8F7',
-           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=stand).place(x=660, y=10)
+           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=stand_new_template).place(x=660, y=10)
     search_frame = Frame(containt_frame, width=300, height=30, bg='#ffffff')
     search_frame.place(x=500, y=50)
     Label(search_frame, image=search_icon, bg='#ffffff').place(x=5, y=7)
@@ -198,7 +198,7 @@ def floating():
     templates_types_dropdown.config(bd=0)
     templates_types_dropdown.config(bg='#F3F3FB')
     Button(containt_frame, bg='#7CB8F7',
-           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=floats).place(x=660, y=10)
+           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=float_new_template).place(x=660, y=10)
     search_frame = Frame(containt_frame, width=300, height=30, bg='#ffffff')
     search_frame.place(x=500, y=50)
     Label(search_frame, image=search_icon, bg='#ffffff').place(x=5, y=7)
