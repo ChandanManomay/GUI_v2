@@ -112,7 +112,7 @@ def prepare():
         prepare_flag = True
 
 
-def stand():
+def stand_new_tempplate():
     clear_frame(container_frame)
     canvas = Canvas(container_frame, bg='white', width=450,
                     height=540)
@@ -125,6 +125,7 @@ def stand():
 
 
 def standard():
+    clear_frame(container_frame)
     containt_frame = Frame(container_frame, width=800,
                            height=540, bg="#F3F3FB")
     containt_frame.place(x=40, y=30)
@@ -173,7 +174,7 @@ def standard():
             'Helvetica', 6), bg='white', fg='#707C97').place(x=270, y=5)
 
 
-def floats():
+def float_new_template():
     clear_frame(container_frame)
     Canvas(container_frame, bg='white', width=450,
            height=540).place(x=40, y=30)
@@ -182,6 +183,7 @@ def floats():
 
 
 def floating():
+    clear_frame(container_frame)
     containt_frame = Frame(container_frame, width=800,
                            height=540, bg="#F3F3FB")
     containt_frame.place(x=40, y=30)
@@ -269,5 +271,5 @@ def review():
 
 menu(0)
 home()
-window.resizable(False, False)
+# window.resizable(False, False)
 window.mainloop()
