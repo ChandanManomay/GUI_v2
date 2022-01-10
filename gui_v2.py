@@ -114,11 +114,11 @@ def prepare():
         prepare_flag = True
 
 
-def stand():
+def stand_new_template():
     clear_frame(container_frame)
     canvas = Canvas(container_frame, bg='white', width=450,
                     height=540)
-    canvas.place(relx=0.088, rely=0.0555,
+    canvas.place(relx=0.05, rely=0.0555,
                  relheight=.9, relwidth=.5114)
     Canvas(container_frame, bg='white', width=300,
            height=540).place(relx=0.614, rely=0.0555,
@@ -149,7 +149,7 @@ def standard():
     templates_types_dropdown.config(bd=0)
     templates_types_dropdown.config(bg='#F3F3FB')
     Button(containt_frame, bg='#7CB8F7',
-           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=stand).place(relx=0.8, rely=0.0185, relheight=.07, relwidth=.2)
+           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=stand_new_template).place(relx=0.8, rely=0.0185, relheight=.07, relwidth=.2)
     search_frame = Frame(containt_frame, width=300, height=30, bg='#ffffff')
     search_frame.place(relx=0.6, rely=0.1, relheight=.07, relwidth=.4)
     Label(search_frame, image=search_icon, bg='#ffffff').place(
@@ -172,7 +172,6 @@ def standard():
     template_6.place(relx=.5625, rely=0.73, relheight=.23, relwidth=.4375)
     temp_list = [template_1, template_2, template_3,
                  template_4, template_5, template_6]
-
     for i in range(6):
         l1 = Label(temp_list[i], text="Template-"+str(i+1),
                    font=('Times', 15, 'bold'), bg='white')
@@ -185,7 +184,7 @@ def standard():
             'Helvetica', 6), bg='white', fg='#707C97').place(relx=0.77, rely=0, relwidth=.33)
 
 
-def floats():
+def float_new_template():
     clear_frame(container_frame)
     canvas = Canvas(container_frame, bg='white', width=450,
                     height=540)
@@ -220,7 +219,7 @@ def floating():
     templates_types_dropdown.config(bd=0)
     templates_types_dropdown.config(bg='#F3F3FB')
     Button(containt_frame, bg='#7CB8F7',
-           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=stand).place(relx=0.8, rely=0.0185, relheight=.07, relwidth=.2)
+           text='    New Templates', image=new_temp_icon, compound=LEFT, bd=0, fg='white', font=('Times', 13), height=30, command=float_new_template).place(relx=0.8, rely=0.0185, relheight=.07, relwidth=.2)
     search_frame = Frame(containt_frame, width=300, height=30, bg='#ffffff')
     search_frame.place(relx=0.6, rely=0.1, relheight=.07, relwidth=.4)
     Label(search_frame, image=search_icon, bg='#ffffff').place(
@@ -260,37 +259,47 @@ def process():
     clear_frame(container_frame)
     containt_frame = Frame(container_frame, width=800,
                            height=540, bg="#F3F3FB")
-    containt_frame.place(x=40, y=30)
+    containt_frame.place(relx=0.05, rely=0.0555,
+                         relheight=.9, relwidth=.9091)
     Label(containt_frame, text="Upload Documents",
-          font=('Arials', 15, 'bold'), bg='#F3F3FB').place(x=5, y=5)
+          font=('Arials', 15, 'bold'), bg='#F3F3FB').place(relx=0.00625, rely=0.00926)
     upload_frame_1 = Frame(containt_frame, width=350, height=250, bg='white')
-    upload_frame_1.place(x=5, y=50)
-    Label(upload_frame_1, image=upload_file_icon, bg='white').place(x=130, y=60)
+    upload_frame_1.place(relx=0.00625, rely=0.0926,
+                         relheight=.463, relwidth=.4375)
+    Label(upload_frame_1, image=upload_file_icon,
+          bg='white').place(relx=0.4, rely=0.3, relheight=.35)
     Label(upload_frame_1, text='Drag and Drop Files',
-          bg='white', fg='#707C97').place(x=120, y=145)
+          bg='white', fg='#707C97').place(relx=0.37, rely=0.65, relheight=.05)
     upload_frame_2 = Frame(containt_frame, width=350, height=250, bg='white')
-    upload_frame_2.place(x=405, y=50)
-    Label(upload_frame_2, image=upload_file_icon, bg='white').place(x=130, y=60)
+    upload_frame_2.place(relx=0.50625, rely=0.0926,
+                         relheight=.463, relwidth=.4375)
+    Label(upload_frame_2, image=upload_file_icon,
+          bg='white').place(relx=0.4, rely=0.3, relheight=.35)
     Label(upload_frame_2, text='Drag and Drop Files',
-          bg='white', fg='#707C97').place(x=120, y=145)
+          bg='white', fg='#707C97').place(relx=0.37, rely=0.65, relheight=.05)
 
     Label(containt_frame, text="Export Result as", font=(
-        'Arials', 12, 'bold')).place(x=160, y=350)
-    Label(containt_frame, image=pdf_icon, bg='#F3F3FB').place(x=300, y=340)
-    Label(containt_frame, image=docs_icon, bg='#F3F3FB').place(x=360, y=340)
-    Label(containt_frame, image=xls_icon, bg='#F3F3FB').place(x=420, y=340)
+        'Arials', 12, 'bold'), bg='#F3F3FB').place(relx=0.2, rely=0.65, relheight=.1)
+    Label(containt_frame, image=pdf_icon, bg='#F3F3FB').place(
+        relx=0.375, rely=0.645, relheight=.1)
+    Label(containt_frame, image=docs_icon, bg='#F3F3FB').place(
+        relx=0.45, rely=0.645, relheight=.1)
+    Label(containt_frame, image=xls_icon, bg='#F3F3FB').place(
+        relx=0.525, rely=0.645, relheight=.1)
     Button(containt_frame, text="   Export", image=export_icon, font=(
-        'Arials', 15, 'bold'), compound=LEFT, bd=0, bg='#707C97', fg='white', width=140).place(x=320, y=420)
+        'Arials', 15, 'bold'), compound=LEFT, bd=0, bg='#707C97', fg='white', width=140).place(relx=0.35, rely=0.8, relheight=.1, relwidth=.2)
 
 
 def review():
     clear_frame(container_frame)
     containt_frame = Frame(container_frame, width=800,
                            height=540, bg="#F3F3FB")
-    containt_frame.place(x=40, y=30)
+    containt_frame.place(relx=0.05, rely=0.0555,
+                         relheight=.9, relwidth=.9091)
     Label(containt_frame, text="Export History",
-          font=('Times', 15, 'bold')).place(x=5, y=5)
-    Frame(containt_frame, width=790, height=480, bg="white").place(x=5, y=40)
+          font=('Times', 15, 'bold')).place(relx=0.05, rely=0)
+    Frame(containt_frame, width=790, height=480, bg="white").place(relx=0.05, rely=0.08,
+                                                                   relheight=.85, relwidth=.9)
 
 
 menu(0)
