@@ -271,5 +271,5 @@ def review():
 
 menu(0)
 home()
-# window.resizable(False, False)
+window.resizable(False, False)
 window.mainloop()
