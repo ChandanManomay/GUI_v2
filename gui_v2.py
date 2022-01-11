@@ -1,7 +1,10 @@
 from pathlib import Path
 
 from tkinter import *
+from tkinter import ttk
 from PIL import Image, ImageTk
+import pandas as pd
+from pandastable import Table, TableModel
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -9,6 +12,25 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
+# For showing tables
+
+
+class TestApp(Frame):
+    """Basic test frame for the table"""
+
+    def __init__(self, filepath, parent=None):
+        self.parent = parent
+        Frame.__init__(self)
+        self.main = self.master
+        f = Frame(parent)
+        f.pack(fill=BOTH, expand=1)
+        df = pd.read_csv(filepath)
+        df = df.iloc[:100, :6]
+        self.table = pt = Table(f, dataframe=df,
+                                showtoolbar=True, showstatusbar=True)
+        pt.show()
+        return
 
 
 window = Tk()
@@ -298,8 +320,16 @@ def review():
                          relheight=.9, relwidth=.9091)
     Label(containt_frame, text="Export History",
           font=('Times', 15, 'bold')).place(relx=0.05, rely=0)
-    Frame(containt_frame, width=790, height=480, bg="white").place(relx=0.05, rely=0.08,
-                                                                   relheight=.85, relwidth=.9)
+    table_frame = Frame(containt_frame, width=790, height=480, bg="white")
+    table_frame.place(relx=0.05, rely=0.08,
+                      relheight=.85, relwidth=.9)
+
+    # for simple Table
+    # df = pd.read_csv('dummy.csv')
+    # df = df.iloc[:100, :6]
+    # pt = Table(table_frame, dataframe=df)
+    # pt.show()
+    TestApp(parent=table_frame, filepath='dummy.csv')
 
 
 menu(0)
