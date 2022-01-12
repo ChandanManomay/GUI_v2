@@ -1,0 +1,8 @@
+S.No,Extraction Date,Extraction Template,Extraction Count,Extraction Pass ,Extraction Fail ,Extraction Status ,Extraction Folder
+1,1/9/2022,template1,50,50,0,Pass,Location1
+2,1/9/2022,template2,50,50,0,Pass,Location1
+3,1/10/2022,template1,70,25,45,Fail,Location2
+4,1/10/2022,template2,20,20,0,Pass,Location3
+5,1/10/2022,template3,85,85,0,Pass,Location4
+6,1/11/2022,template2,25,10,15,Fail,Location5
+7,1/11/2022,template4,60,60,0,Pass,Location6
