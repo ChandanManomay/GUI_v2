@@ -416,8 +416,9 @@ def process():
 
 
 def bar_chart(df, col):
-    col = list(map(int, col.get().split()))
-    df = df.iloc[:, col]
+    if col.get() != "":
+        col = list(map(int, col.get().split()))
+        df = df.iloc[:, col]
     df.plot.bar()
     plt.show()
 
