@@ -1,4 +1,6 @@
+from operator import index
 from pathlib import Path
+from pydoc import pager
 
 from tkinter import *
 from tkinter import ttk
@@ -89,6 +91,11 @@ import_icon = ImageTk.PhotoImage(
 save_icon = ImageTk.PhotoImage(
     Image.open(relative_to_assets("save.png")).resize(
         (25, 25), Image.ANTIALIAS)
+)
+
+droupdown_icon = ImageTk.PhotoImage(
+    Image.open(relative_to_assets("arrow.png")).resize(
+        (15, 15), Image.ANTIALIAS)
 )
 
 
@@ -336,6 +343,7 @@ def floating():
         containt_frame, variable, *templates_types)
     templates_types_dropdown.place(
         relx=0, rely=0.1, relheight=0.07, relwidth=0.2)
+    # templates_types_dropdown.config(width=20)
     templates_types_dropdown.config(bd=0)
     templates_types_dropdown.config(bg="#F3F3FB")
     Button(
@@ -451,12 +459,12 @@ def process():
     ).place(relx=0.3, rely=0.7, relheight=0.1, relwidth=0.4)
 
 
-# def bar_chart(df, col):
-#     if col.get() != "":
-#         col = list(map(int, col.get().split()))
-#         df = df.iloc[:, col]
-#     df.plot.bar()
-#     plt.show()
+def bar_chart(df, col):
+    if col.get() != "":
+        col = list(map(int, col.get().split()))
+        df = df.iloc[:, col]
+    df.plot.bar()
+    plt.show()
 
 
 def review():
@@ -465,7 +473,7 @@ def review():
                            height=540, bg="#F3F3FB")
     containt_frame.place(relx=0.05, rely=0.0555,
                          relheight=0.9, relwidth=0.9091)
-    Label(containt_frame, text="Export History", font=("Times", 15, "bold")).place(
+    Label(containt_frame, text="Export History", font=("Times", 18, "bold"), bg='#F3F3FB').place(
         relx=0.05, rely=0
     )
     table_container_frame = Frame(
@@ -473,14 +481,44 @@ def review():
     table_container_frame.place(
         relx=0.05, rely=0.08, relheight=0.85, relwidth=0.9)
     table_frame = Frame(table_container_frame, bg="white")
-    table_frame.place(relx=0, rely=0, relheight=1, relwidth=1)
+    table_frame.place(relx=0, rely=0, relheight=0.85, relwidth=1)
+    Canvas(table_frame, bg='#E5E5E5', height=30).place(
+        relx=0, rely=0, relwidth=1)
+    df = pd.read_csv("DashboardView.csv", index_col=None)
+    for col in df.columns:
+        Label(table_frame, text=col, font=("Helvetica 10 bold"), bg='#E5E5E5').grid(
+            row=0, column=list(df.columns).index(col), padx=5, pady=5)
 
-    df = pd.read_csv("DashboardView.csv")
+        i = 1
+        for row in df[col]:
+            Label(table_frame, text=row, bg='white', font=("Helvetica 10")).grid(row=i,
+                                                                                 column=list(df.columns).index(col), pady=15)
+            i += 1
 
-    # Showing in table
-    pt = Table(table_frame, dataframe=df, showtoolbar=True, showstatusbar=True)
-    # pt.columncolors['Extraction Status '] = 'red'
-    pt.show()
+    page_frame = Frame(table_container_frame, bg='white')
+    page_frame.place(relx=0, rely=0.85, relheight=0.12, relwidth=1)
+
+    page_frame_droupdown = Frame(page_frame, bg='white')
+    page_frame_droupdown.place(relx=0.05, relheight=1, relwidth=.2, rely=.5)
+
+    Label(page_frame_droupdown, text="Rows per page:",
+          bg='white').grid(row=0, column=0)
+    pages = list(range(1, 12))
+    variable = IntVar()
+    variable.set(pages[10])
+    page_dropdown = OptionMenu(page_frame_droupdown, variable, *pages)
+    page_dropdown.grid(row=0, column=1)
+    page_dropdown.config(indicatoron=0, image=droupdown_icon,
+                         compound='right', bg='white', bd=0)
+
+    page_frame_itemcount = Frame(page_frame, bg='white')
+    page_frame_itemcount.place(relx=0.83, relheight=1, relwidth=.2, rely=.5)
+    Label(page_frame_itemcount, text='1-10 of 30 items',
+          bg='white').grid(row=0, column=0)
+    Button(page_frame_itemcount, text='<',
+           bg='white', bd=0).grid(row=0, column=1)
+    Button(page_frame_itemcount, text='>',
+           bg='white', bd=0).grid(row=0, column=2)
 
 
 menu(0)
